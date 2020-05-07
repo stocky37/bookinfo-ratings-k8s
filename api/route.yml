@@ -1,0 +1,19 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  annotations:
+    openshift.io/host.generated: "true"
+  labels:
+    app: ratings
+    app.kubernetes.io/component: ratings
+    app.kubernetes.io/instance: ratings
+  name: ratings
+spec:
+  port:
+    targetPort: 8080-tcp
+  subdomain: ""
+  to:
+    kind: Service
+    name: ratings
+    weight: 100
+  wildcardPolicy: None

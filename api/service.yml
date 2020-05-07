@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations: {}
+  labels:
+    app: ratings
+    app.kubernetes.io/component: ratings
+    app.kubernetes.io/instance: ratings
+  name: ratings
+spec:
+  ports:
+  - name: 8080-tcp
+    port: 8080
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    deploymentconfig: ratings
+  sessionAffinity: None
+  type: ClusterIP
